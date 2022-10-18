@@ -56,6 +56,10 @@ public class CommandController : ControllerBase
                 result.Add("dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 6.0.10");
             }
         }
+        else
+        {
+            result.Add("I don't understand you, please contact anhdung.itus@gmail.com for support!");
+        }
         
         return Task.FromResult<ActionResult<IEnumerable<string>>>(result);
     }
