@@ -39,7 +39,7 @@ public class CommandController : ControllerBase
         }else if (term.Contains("angular") && term.Contains("new") && term.Contains("app"))
         {
             result.Add($"ng new {lastWord}");
-        } else if (term.Contains("nuget") || term.Contains("package"))
+        } else if (term.Contains("nuget") || term.Contains("package") || term.Contains("install"))
         {
             if (term.Contains("entity") || term.Contains("framework"))
             {
