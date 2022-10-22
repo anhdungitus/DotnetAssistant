@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAssistant", "DotNetAssistant\DotNetAssistant.csproj", "{555EDE4E-F89A-484B-A4B7-4FE2F1D44F1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAssistant.Test", "DotNetAssistant.Test\DotNetAssistant.Test.csproj", "{954844ED-7EE9-4BE2-8D6B-33A8D4BBA798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{555EDE4E-F89A-484B-A4B7-4FE2F1D44F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{555EDE4E-F89A-484B-A4B7-4FE2F1D44F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{555EDE4E-F89A-484B-A4B7-4FE2F1D44F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{954844ED-7EE9-4BE2-8D6B-33A8D4BBA798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954844ED-7EE9-4BE2-8D6B-33A8D4BBA798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954844ED-7EE9-4BE2-8D6B-33A8D4BBA798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954844ED-7EE9-4BE2-8D6B-33A8D4BBA798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
