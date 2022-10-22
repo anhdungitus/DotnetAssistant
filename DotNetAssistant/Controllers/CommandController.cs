@@ -11,6 +11,21 @@ public class CommandController : ControllerBase
         var result = new List<string>();
         term = term.ToLower();
         var lastWord = term.Split(' ').Last();
+
+        if (term.Contains("angular"))
+        {
+            if (term.Contains("cli"))
+            {
+                if (term.Contains("install"))
+                {
+                    result.Add("npm install -g @angular/cli");
+                }
+            }
+        } else if (term.Contains("dotnet"))
+        {
+            
+        }
+        
         if (term.Contains("update"))
         {
             if (term.Contains("database"))
