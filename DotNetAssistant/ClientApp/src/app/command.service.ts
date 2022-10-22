@@ -14,9 +14,17 @@ export class CommandService {
   ) { }
 
   searchService(term: string) {
+    let authToken = localStorage.getItem('auth_token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: `Bearer ${authToken}`
+      })
+    }
+
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<string[]>(`${this.apiCommandUrl}/${term}`);
+    return this.http.get<string[]>(`${this.apiCommandUrl}/${term}`, httpOptions);
   }
 }

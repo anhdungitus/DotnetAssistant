@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import  {AppRoutingModule } from "./app.routing.module";
 import { HomeComponent } from './home/home.component';
+import {AuthGuard} from "./auth.guard";
 
 
 @NgModule({
@@ -18,8 +19,9 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule
-  ],
-  providers: [],
+
+],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

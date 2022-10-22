@@ -6,52 +6,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fdf60e-68ae-4d82-8387-dd285bb8d2e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Auth/JwtFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/proxy.conf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/account.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/account.routing.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/registration-form/registration-form.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/registration-form/registration-form.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/registration-form/registration-form.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/registration-form/registration-form.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/config/config.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/config/config.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/dashboard/dashboard.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/home/home.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/home/home.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/home/home.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/home/home.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/http-error-handler.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/message.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/shared/services/user.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/shared/services/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/assets/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Controllers/AccountsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Controllers/AuthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Controllers/DashboardController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Entities/AppUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Entities/Customer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Helpers/Constants.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Helpers/Errors.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Helpers/Tokens.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Mapping/ViewModelToEntityMappingProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/Model/JwtIssuerOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ViewModels/CredentialsViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ViewModels/RegistrationViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/favorite-color/favorite-color.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/favorite-color/favorite-color.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/favorite-color/favorite-color.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/favorite-color/favorite-color.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/auth.guard.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DotNetAssistant/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DotNetAssistant/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/account.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/account.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/account.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/account.routing.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/account/login-form/login-form.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/app.routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/command.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/command.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/shared/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/src/app/shared/services/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DotNetAssistant/Controllers/CommandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/Controllers/CommandController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DotNetAssistant/DotNetAssistant.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/DotNetAssistant.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DotNetAssistant/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DotNetAssistant/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/appsettings.json" afterDir="false" />
+    </list>
+    <list id="9babc4d4-2044-43d8-b44d-1c7ad1027420" name="config" comment="">
+      <change afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/proxy.conf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DotNetAssistant/ClientApp/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/DotNetAssistant/ClientApp/angular.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +65,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
     "ts.external.directory.path": "D:\\SaaS Products\\DotNetAssistant\\DotNetAssistant\\ClientApp\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -202,16 +176,22 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b2fdf60e-68ae-4d82-8387-dd285bb8d2e4" name="Changes" comment="" />
+      <changelist id="9babc4d4-2044-43d8-b44d-1c7ad1027420" name="config" comment="" />
       <created>1666112318793</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666112318793</updated>
       <workItem from="1666112327105" duration="477000" />
       <workItem from="1666112830757" duration="13109000" />
-      <workItem from="1666206789609" duration="24732000" />
+      <workItem from="1666206789609" duration="25581000" />
+      <workItem from="1666430711633" duration="3454000" />
+      <workItem from="1666446190469" duration="7845000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1666112386515</created>
@@ -241,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666140629510</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="register function">
+      <created>1666412082079</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666412082079</updated>
+    </task>
+    <task id="LOCAL-00006" summary="unit test proj">
+      <created>1666434790345</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666434790345</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +249,9 @@
     <MESSAGE value="api get commands" />
     <MESSAGE value="super AI upgrade" />
     <MESSAGE value="modify keyword" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify keyword" />
+    <MESSAGE value="register function" />
+    <MESSAGE value="unit test proj" />
+    <option name="LAST_COMMIT_MESSAGE" value="unit test proj" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

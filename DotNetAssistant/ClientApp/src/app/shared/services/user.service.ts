@@ -16,12 +16,14 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService  {
   baseUrl = "api";
   private handleError: HandleError;
+  private loggedIn = false;
 
   constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
     this.handleError = httpErrorHandler.createHandleError('UserService');
+    this.loggedIn = !!localStorage.getItem('auth_token');
   }
 
   register(model: UserRegistration): Observable<UserRegistration>
@@ -32,19 +34,21 @@ export class UserService {
       );
   }
 
-  // login(model: Credentials) {
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //
-  //   return this.http.post<Credentials>(this.baseUrl + '/auth/login', model, httpOptions)
-  //     .subscribe(res => {
-  //       localStorage.setItem('auth_token', res.auth_token);
-  //       this.loggedIn = true;
-  //       this._authNavStatusSource.next(true);
-  //       return true;
-  //     })
-  //     .catch(this.handleError);
-  // }
+  login(model: Credentials): Observable<Credentials>
+  {
+    return this.http.post<Credentials>(this.baseUrl + "/auth/login", model, httpOptions)
+      .pipe(
+        catchError(this.handleError('login', model))
+      );
+  }
+
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
+  setLogin() {
+    this.loggedIn = true;
+  }
 }
 
 export interface UserRegistration {

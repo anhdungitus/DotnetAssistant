@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetAssistant.Controllers;
 
 [Route("api/[controller]")]
+[Authorize]
 public class CommandController : ControllerBase
 {
     [HttpGet("{term}")]

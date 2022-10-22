@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginFormComponent} from "./login-form/login-form.component";
 import {RegistrationFormComponent} from "./registration-form/registration-form.component";
+import {FavoriteColorComponent} from "./favorite-color/favorite-color.component";
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationFormComponent,
+  },
+  {
+    path: 'test',
+    component: FavoriteColorComponent,
   }
 ];
 

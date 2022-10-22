@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {CommandService} from "../command.service";
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
+import { AuthGuard } from '../auth.guard';
 
 @Component({
   selector: 'app-home',
