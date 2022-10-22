@@ -1,8 +1,9 @@
-﻿namespace DotNetAssistant.Entities;
+﻿using DotNetAssistant.Data;
 
-public class Customer
+namespace DotNetAssistant.Entities;
+
+public class Customer : BaseEntity
 {
-    public int Id { get; set; }
     public string? IdentityId { get; set; }
     public AppUser? Identity { get; set; }
     public string? Location { get; set; }

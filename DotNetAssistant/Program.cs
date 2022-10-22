@@ -73,6 +73,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

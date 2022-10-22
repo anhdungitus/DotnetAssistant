@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DotNetAssistant.Data;
+using DotNetAssistant.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetAssistant.Controllers;
@@ -7,9 +9,25 @@ namespace DotNetAssistant.Controllers;
 [Authorize]
 public class CommandController : ControllerBase
 {
-    [HttpGet("{term}")]
-    public Task<ActionResult<IEnumerable<string>>> GetCommand(string term)
+    private IRepository<Customer> _customerRepository;
+
+    public CommandController(IRepository<Customer> customerRepository)
     {
+        _customerRepository = customerRepository;
+    }
+
+    [HttpGet("{term}")]
+    public async Task<ActionResult<IEnumerable<string>>> GetCommand(string term)
+    {
+        var data = await _customerRepository.GetAllPagedAsync(async query =>
+        {
+            query = query.Where(s => s.Id > 0);
+            return query;
+        }, 1, 2);
+        foreach (var customer in data)
+        {
+            Console.WriteLine(customer.IdentityId);
+        }
         var result = new List<string>();
         term = term.ToLower();
         var lastWord = term.Split(' ').Last();
@@ -78,6 +96,6 @@ public class CommandController : ControllerBase
             result.Add("I don't understand you, please contact anhdung.itus@gmail.com for support!");
         }
         
-        return Task.FromResult<ActionResult<IEnumerable<string>>>(result);
+        return await Task.FromResult<ActionResult<IEnumerable<string>>>(result);
     }
 }
