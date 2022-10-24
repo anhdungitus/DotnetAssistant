@@ -9,7 +9,7 @@ namespace DotNetAssistant.Controllers;
 [Authorize]
 public class CommandController : ControllerBase
 {
-    private IRepository<Customer> _customerRepository;
+    private readonly IRepository<Customer> _customerRepository;
 
     public CommandController(IRepository<Customer> customerRepository)
     {

@@ -74,6 +74,13 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
+builder.Services.AddCors(options => options.AddPolicy("defaultx",
+    policyBuilder => 
+        policyBuilder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -91,6 +98,7 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseCors("defaultx");
 app.UseAuthentication();
 app.UseAuthorization();
 

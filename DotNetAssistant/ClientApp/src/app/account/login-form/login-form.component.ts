@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
 import {UserService} from "../../shared/services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
@@ -42,12 +41,11 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 export interface Credentials {
   username: string;
   password: string;
-  id: string;
-  auth_token: string;
 }
 
 export interface JwtResponse {
-
+  id: string;
+  auth_token: string;
 }
 
 

@@ -1,4 +1,3 @@
-using DotNetAssistant.Core;
 using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
 using FluentAssertions;
@@ -17,9 +16,7 @@ public class Tests
         var services = new ServiceCollection();
         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=dotnet.assistant.api;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;"));
         services.AddTransient<IRepository<Customer>, EntityRepository<Customer>>();
-
         var serviceProvider = services.BuildServiceProvider();
-
         _customerRepository = serviceProvider.GetService<IRepository<Customer>>();
     }
 

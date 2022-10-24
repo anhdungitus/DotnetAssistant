@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable, throwError} from "rxjs";
 import { catchError, retry } from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
-import {Credentials} from "../../account/login-form/login-form.component";
+import {Credentials, JwtResponse} from "../../account/login-form/login-form.component";
 
 
 const httpOptions = {
@@ -34,11 +34,11 @@ export class UserService  {
       );
   }
 
-  login(model: Credentials): Observable<Credentials>
+  login(model: Credentials) : Observable<JwtResponse>
   {
-    return this.http.post<Credentials>(this.baseUrl + "/auth/login", model, httpOptions)
+    return this.http.post<JwtResponse>(this.baseUrl + "/auth/login", model, httpOptions)
       .pipe(
-        catchError(this.handleError('login', model))
+        catchError(this.handleError<JwtResponse>('login'))
       );
   }
 
