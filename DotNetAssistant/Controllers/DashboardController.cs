@@ -1,8 +1,6 @@
 ﻿using System.Security.Claims;
 using DotNetAssistant.Data;
-using DotNetAssistant.Entities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +13,7 @@ namespace DotNetAssistant.Controllers
         private readonly ClaimsPrincipal _caller;
         private readonly ApplicationDbContext _appDbContext;
 
-        public DashboardController(UserManager<AppUser> userManager, ApplicationDbContext appDbContext, IHttpContextAccessor httpContextAccessor)
+        public DashboardController(ApplicationDbContext appDbContext, IHttpContextAccessor httpContextAccessor)
         {
             _caller = httpContextAccessor.HttpContext.User;
             _appDbContext = appDbContext;

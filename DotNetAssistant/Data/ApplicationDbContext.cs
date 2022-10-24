@@ -11,4 +11,5 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
     }
 
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<Question> Questions { get; set; }
 }
