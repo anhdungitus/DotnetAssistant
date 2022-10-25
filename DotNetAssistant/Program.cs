@@ -1,5 +1,6 @@
 using System.Text;
 using DotNetAssistant.Auth;
+using DotNetAssistant.Core.Caching;
 using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
 using DotNetAssistant.Helpers;
@@ -7,6 +8,7 @@ using DotNetAssistant.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -74,6 +76,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
+builder.Services.AddScoped<IRepository<Question>, EntityRepository<Question>>();
 builder.Services.AddCors(options => options.AddPolicy("defaultx",
     policyBuilder => 
         policyBuilder
@@ -81,6 +84,12 @@ builder.Services.AddCors(options => options.AddPolicy("defaultx",
             .AllowAnyMethod()
             .AllowAnyHeader()
 ));
+
+
+var memoryCache = new MemoryCache(new MemoryCacheOptions());
+builder.Services.AddSingleton<IMemoryCache>(memoryCache);
+builder.Services.AddSingleton<IStaticCacheManager, MemoryCacheManager>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
