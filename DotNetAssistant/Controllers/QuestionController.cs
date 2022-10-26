@@ -14,11 +14,38 @@ public class QuestionController : ControllerBase
         _customerRepository = customerRepository;
     }
 
-    // GET api/question/data
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Question>> Question(int id)
+    {
+        var data = await _customerRepository.GetByIdAsync(id);
+        return await Task.FromResult<ActionResult<Question>>(data);
+    }
+    
     [HttpGet]
-    public async Task<ActionResult<List<Question>>> Data()
+    public async Task<ActionResult<List<Question>>> Questions()
     {
         var data = await _customerRepository.GetAllPagedAsync(questions => questions, 1, 10);
         return await Task.FromResult<ActionResult<List<Question>>>(data.ToList());
+    }
+    
+    [HttpPost]
+    public async Task<ActionResult<Question>> CreateQuestion([FromBody] Question question)
+    {
+        var result = await _customerRepository.InsertAsync(question);
+        return await Task.FromResult<ActionResult<Question>>(result);
+    }
+    
+    [HttpPatch]
+    public async Task<ActionResult<Question>> Update([FromBody] Question question)
+    {
+        var result = await _customerRepository.UpdateAsync(question);
+        return await Task.FromResult<ActionResult<Question>>(result);
+    }
+    
+    [HttpDelete]
+    public async Task<ActionResult<Question>> Delete([FromBody] Question question)
+    {
+        await _customerRepository.DeleteAsync(question);
+        return await Task.FromResult<ActionResult<Question>>(question);
     }
 }

@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {PageEvent} from "@angular/material/paginator";
 import {Question, QuestionService} from "./question.service";
+import {MatDialog} from "@angular/material/dialog";
+import {EditQuestionComponent} from "./edit-question/edit-question.component";
 
 @Component({
   selector: 'app-question',
@@ -12,11 +14,12 @@ export class QuestionComponent implements AfterViewInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    public dialog: MatDialog
   ) { }
 
   title = 'MatTable';
-  displayedColumns: string[] = ['id', 'text', 'createdOn'];
+  displayedColumns: string[] = ['id', 'text', 'createdOn', 'Action'];
   dataSource: Question[] = [];
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -32,6 +35,22 @@ export class QuestionComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.questionService.getQuestion().subscribe(r => this.dataSource = r);
+  }
+
+  edit(question: Question) {
+    const dialogRef = this.dialog.open(EditQuestionComponent, {
+      width: '250px',
+      height: '500px',
+      data: question
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  delete(id: number) {
+    console.log("delete " + id);
   }
 }
 

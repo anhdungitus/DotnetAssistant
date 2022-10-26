@@ -146,14 +146,15 @@ public sealed class EntityRepository<TEntity> : IRepository<TEntity> where TEnti
         return await query.ToPagedListAsync(pageIndex, pageSize, getOnlyTotalCount);
     }
 
-    public async Task InsertAsync(TEntity entity)
+    public async Task<TEntity> InsertAsync(TEntity entity)
     {
-        await TableDbSet.AddAsync(entity);
+        var entityEntry = await TableDbSet.AddAsync(entity);
         await _context.SaveChangesAsync();
         await _staticCacheManager.RemoveByPrefixAsync(DnaEntityCacheDefaults<TEntity>.Prefix);
+        return entityEntry.Entity;
     }
 
-    public async Task InsertAsync(IList<TEntity> entities)
+    public async Task<IList<TEntity>> InsertAsync(IList<TEntity> entities)
     {
         if (entities == null)
             throw new ArgumentNullException(nameof(entities));
@@ -162,13 +163,16 @@ public sealed class EntityRepository<TEntity> : IRepository<TEntity> where TEnti
         await _context.SaveChangesAsync();
         await _staticCacheManager.RemoveByPrefixAsync(DnaEntityCacheDefaults<TEntity>.Prefix);
 
+        return entities;
     }
 
-    public async Task UpdateAsync(TEntity entity)
+    public async Task<TEntity> UpdateAsync(TEntity entity)
     {
-        TableDbSet.Update(entity);
+        var entry = TableDbSet.Update(entity);
         await _context.SaveChangesAsync();
         await _staticCacheManager.RemoveByPrefixAsync(DnaEntityCacheDefaults<TEntity>.ByIdPrefix);
+
+        return entry.Entity;
     }
 
     public async Task UpdateAsync(IList<TEntity> entities)

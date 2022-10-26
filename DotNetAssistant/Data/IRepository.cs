@@ -16,13 +16,13 @@ public interface IRepository<TEntity>
         Func<IStaticCacheManager, CacheKey?>? getCacheKey = null, bool includeDeleted = true);
     Task<IList<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, Task<IQueryable<TEntity>>> func,
         Func<IStaticCacheManager, Task<CacheKey?>>? getCacheKey, bool includeDeleted = true);
-    Task<IPagedList<TEntity>> GetAllPagedAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>> func = null,
+    Task<IPagedList<TEntity>> GetAllPagedAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>>? func = null,
         int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false, bool includeDeleted = true);
-    Task<IPagedList<TEntity>> GetAllPagedAsync(Func<IQueryable<TEntity>, Task<IQueryable<TEntity>>> func = null,
+    Task<IPagedList<TEntity>> GetAllPagedAsync(Func<IQueryable<TEntity>, Task<IQueryable<TEntity>>>? func = null,
         int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false);
-    Task InsertAsync(TEntity entity);
-    Task InsertAsync(IList<TEntity> entities);
-    Task UpdateAsync(TEntity entity);
+    Task<TEntity> InsertAsync(TEntity entity);
+    Task<IList<TEntity>> InsertAsync(IList<TEntity> entities);
+    Task<TEntity> UpdateAsync(TEntity entity);
     Task UpdateAsync(IList<TEntity> entities);
     Task DeleteAsync(TEntity entity);
     Task DeleteAsync(IList<TEntity> entities);
