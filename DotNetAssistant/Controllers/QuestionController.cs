@@ -22,9 +22,9 @@ public class QuestionController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<ActionResult<List<Question>>> Questions()
+    public async Task<ActionResult<List<Question>>> Questions(int pageIndex = 0, int pageSize = 10, string sortOrder = "id", string sortDirection = "asc")
     {
-        var data = await _customerRepository.GetAllPagedAsync(questions => questions, 1, 10);
+        var data = await _customerRepository.GetAllPagedAsync(questions => questions.OrderBy(q => q.Id), pageIndex, pageSize);
         return await Task.FromResult<ActionResult<List<Question>>>(data.ToList());
     }
     
@@ -42,10 +42,11 @@ public class QuestionController : ControllerBase
         return await Task.FromResult<ActionResult<Question>>(result);
     }
     
-    [HttpDelete]
-    public async Task<ActionResult<Question>> Delete([FromBody] Question question)
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete([FromQuery]int id)
     {
-        await _customerRepository.DeleteAsync(question);
-        return await Task.FromResult<ActionResult<Question>>(question);
+        var data = await _customerRepository.GetByIdAsync(id);
+        await _customerRepository.DeleteAsync(data);
+        return await Task.FromResult<ActionResult>(Ok());
     }
 }

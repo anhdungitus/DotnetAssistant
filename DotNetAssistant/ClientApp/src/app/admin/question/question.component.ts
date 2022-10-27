@@ -3,6 +3,8 @@ import {PageEvent} from "@angular/material/paginator";
 import {Question, QuestionService} from "./question.service";
 import {MatDialog} from "@angular/material/dialog";
 import {EditQuestionComponent} from "./edit-question/edit-question.component";
+import {AddQuestionComponent} from "./add-question/add-question.component";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-question',
@@ -28,19 +30,18 @@ export class QuestionComponent implements AfterViewInit {
     }
   }
 
-  public updateData(event?:PageEvent){
-    this.dataSource = this.dataSource.slice(1, 2);
+  public updateData(event:PageEvent){
+    this.questionService.getQuestion(event.pageIndex, event?.pageSize).subscribe(r => this.dataSource = r);
     return event;
   }
 
   ngAfterViewInit(): void {
-    this.questionService.getQuestion().subscribe(r => this.dataSource = r);
+    this.questionService.getQuestion(0, 10).subscribe(r => this.dataSource = r);
   }
 
   edit(question: Question) {
     const dialogRef = this.dialog.open(EditQuestionComponent, {
       width: '250px',
-      height: '500px',
       data: question
     });
 
@@ -50,7 +51,25 @@ export class QuestionComponent implements AfterViewInit {
   }
 
   delete(id: number) {
-    console.log("delete " + id);
+    this.questionService.deleteQuestion(id).subscribe();
+  }
+
+  addData() {
+    const dialogRef = this.dialog.open(AddQuestionComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  applyFilter($event: KeyboardEvent) {
+    console.log($event);
+  }
+
+  sortData($event: Sort) {
+    console.log($event);
   }
 }
 

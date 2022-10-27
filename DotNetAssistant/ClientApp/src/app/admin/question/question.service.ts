@@ -31,8 +31,8 @@ export class QuestionService {
     this.handleError = httpErrorHandler.createHandleError('QuestionService');
   }
 
-  getQuestion(): Observable<Question[]> {
-    return this.http.get<Question[]>(this.apiQuestionUrl).pipe(
+  getQuestion(pageIndex: number, pageSize: number): Observable<Question[]> {
+    return this.http.get<Question[]>(this.apiQuestionUrl + "?pageIndex=" + pageIndex + "&pageSize=" + pageSize).pipe(
       catchError(this.handleError<Question[]>('getQuestion'))
     );
   }
@@ -41,5 +41,17 @@ export class QuestionService {
     return this.http.patch<Question>(this.apiQuestionUrl, question, httpOptions).pipe(
       catchError(this.handleError<Question>('update'))
     );
+  }
+
+  deleteQuestion(id: number) {
+    return this.http.delete(this.apiQuestionUrl + '/delete' + "?id=" + id).pipe(
+      catchError(this.handleError('delete'))
+    );
+  }
+
+  add(question: Question) : Observable<Question> {
+    return this.http.post<Question>(this.apiQuestionUrl, question, httpOptions).pipe(
+      catchError(this.handleError<Question>('add'))
+    )
   }
 }

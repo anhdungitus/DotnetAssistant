@@ -11,6 +11,10 @@ import {MatTableModule} from "@angular/material/table";
 import {QuestionComponent} from "./admin/question/question.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
 
 
 
@@ -21,7 +25,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     QuestionComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
@@ -29,8 +33,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTableModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ReactiveFormsModule
-],
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule
+  ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
