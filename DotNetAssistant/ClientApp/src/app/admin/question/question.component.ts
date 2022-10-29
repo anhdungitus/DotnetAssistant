@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {EditQuestionComponent} from "./edit-question/edit-question.component";
 import {AddQuestionComponent} from "./add-question/add-question.component";
 import {Sort} from "@angular/material/sort";
+import {ConfirmationDialogComponent} from "./confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-question',
@@ -14,13 +15,18 @@ import {Sort} from "@angular/material/sort";
 export class QuestionComponent implements AfterViewInit {
   pageEvent?: PageEvent;
   pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageIndex= 0;
+  pageSize= 10;
+  sortActive='id';
+  sortDirection='asc';
+  keyword='';
 
   constructor(
     private questionService: QuestionService,
     public dialog: MatDialog
   ) { }
 
-  title = 'MatTable';
+  title = 'Table';
   displayedColumns: string[] = ['id', 'text', 'createdOn', 'Action'];
   dataSource: Question[] = [];
 
@@ -31,12 +37,18 @@ export class QuestionComponent implements AfterViewInit {
   }
 
   public updateData(event:PageEvent){
-    this.questionService.getQuestion(event.pageIndex, event?.pageSize).subscribe(r => this.dataSource = r);
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.refreshData();
     return event;
   }
 
+  public refreshData() {
+    this.questionService.getQuestion(this.pageIndex, this.pageSize, this.sortActive, this.sortDirection, this.keyword).subscribe(r => this.dataSource = r);
+  }
+
   ngAfterViewInit(): void {
-    this.questionService.getQuestion(0, 10).subscribe(r => this.dataSource = r);
+    this.refreshData();
   }
 
   edit(question: Question) {
@@ -46,12 +58,27 @@ export class QuestionComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.refreshData();
     });
   }
 
   delete(id: number) {
-    this.questionService.deleteQuestion(id).subscribe();
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.data) {
+        this.questionService.deleteQuestion(id).subscribe(
+          r => {
+            this.refreshData();
+          }
+        );
+        this.refreshData();
+      }
+    });
+
+
   }
 
   addData() {
@@ -60,16 +87,19 @@ export class QuestionComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.refreshData();
     });
   }
 
   applyFilter($event: KeyboardEvent) {
-    console.log($event);
+    this.keyword = ($event.target as HTMLInputElement).value;
+    this.refreshData();
   }
 
   sortData($event: Sort) {
-    console.log($event);
+    this.sortActive = $event.active;
+    this.sortDirection = $event.direction;
+    this.refreshData();
   }
 }
 

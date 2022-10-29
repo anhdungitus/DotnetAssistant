@@ -31,8 +31,13 @@ export class QuestionService {
     this.handleError = httpErrorHandler.createHandleError('QuestionService');
   }
 
-  getQuestion(pageIndex: number, pageSize: number): Observable<Question[]> {
-    return this.http.get<Question[]>(this.apiQuestionUrl + "?pageIndex=" + pageIndex + "&pageSize=" + pageSize).pipe(
+  getQuestion(pageIndex: number, pageSize: number, sortActive: string, sortDirection: string, keyword: string): Observable<Question[]> {
+    return this.http.get<Question[]>(this.apiQuestionUrl + "?pageIndex=" + pageIndex
+      + "&pageSize=" + pageSize
+      + "&sortOrder=" + sortActive
+      + "&sortDirection=" + sortDirection
+      + "&keyword=" + keyword
+    ).pipe(
       catchError(this.handleError<Question[]>('getQuestion'))
     );
   }

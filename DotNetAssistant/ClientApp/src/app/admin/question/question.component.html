@@ -6,7 +6,7 @@
 
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Keyword" #input>
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" matSortActive="id" matSortDirection="asc" matSortDisableClear>
