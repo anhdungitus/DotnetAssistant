@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {QuestionService} from "../question.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -9,7 +8,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./confirmation-dialog.component.css']
 })
 export class ConfirmationDialogComponent implements OnInit {
-  constructor(private fb: FormBuilder, private questionService: QuestionService, public dialogRef: MatDialogRef<ConfirmationDialogComponent>
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<ConfirmationDialogComponent>
     , @Inject(MAT_DIALOG_DATA) public id: number) { }
 
   ngOnInit(): void {
@@ -17,8 +16,6 @@ export class ConfirmationDialogComponent implements OnInit {
 
   Yes() {
     this.dialogRef.close({data : true});
-    // this.questionService.deleteQuestion(this.id).subscribe(s => {
-    // });
   }
 
   No() {

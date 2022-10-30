@@ -15,14 +15,14 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
-
-
+import {PlanComponent} from "./plan/plan.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    QuestionComponent
+    QuestionComponent,
+    PlanComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

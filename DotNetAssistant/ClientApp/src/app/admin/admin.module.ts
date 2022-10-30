@@ -5,6 +5,7 @@ import { EditQuestionComponent } from './question/edit-question/edit-question.co
 import {ReactiveFormsModule} from "@angular/forms";
 import { AddQuestionComponent } from './question/add-question/add-question.component';
 import { ConfirmationDialogComponent } from './question/confirmation-dialog/confirmation-dialog.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ConfirmationDialogComponent } from './question/confirmation-dialog/conf
 
     EditQuestionComponent,
      AddQuestionComponent,
-     ConfirmationDialogComponent
+     ConfirmationDialogComponent,
+     AdminLayoutComponent
   ],
   imports: [
     CommonModule,
