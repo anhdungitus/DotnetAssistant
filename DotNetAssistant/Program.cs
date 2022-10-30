@@ -5,6 +5,7 @@ using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
 using DotNetAssistant.Helpers;
 using DotNetAssistant.Model;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -74,9 +75,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
 });
 
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
-builder.Services.AddScoped<IRepository<Question>, EntityRepository<Question>>();
 builder.Services.AddCors(options => options.AddPolicy("defaultx",
     policyBuilder => 
         policyBuilder
@@ -84,6 +82,11 @@ builder.Services.AddCors(options => options.AddPolicy("defaultx",
             .AllowAnyMethod()
             .AllowAnyHeader()
 ));
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
+builder.Services.AddScoped<IRepository<Question>, EntityRepository<Question>>();
+builder.Services.AddScoped<IValidator<Question>, QuestionValidator>();
 
 
 var memoryCache = new MemoryCache(new MemoryCacheOptions());

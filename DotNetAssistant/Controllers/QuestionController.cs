@@ -1,5 +1,9 @@
 ﻿using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
+using DotNetAssistant.Helpers;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetAssistant.Controllers;
@@ -8,10 +12,13 @@ namespace DotNetAssistant.Controllers;
 public class QuestionController : ControllerBase
 {
     private readonly IRepository<Question> _customerRepository;
+    private readonly IValidator<Question> _validator;
 
-    public QuestionController(IRepository<Question> customerRepository)
+
+    public QuestionController(IRepository<Question> customerRepository, IValidator<Question> validator)
     {
         _customerRepository = customerRepository;
+        _validator = validator;
     }
 
     [HttpGet("{id}")]
@@ -48,6 +55,13 @@ public class QuestionController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Question>> CreateQuestion([FromBody] Question question)
     {
+        var validationResult = await _validator.ValidateAsync(question);
+
+        if (!validationResult.IsValid)
+        {
+            validationResult.AddToModelState(this.ModelState);
+            return BadRequest(this.ModelState);
+        }
         question.CreatedOnUtc = DateTime.UtcNow;
         var result = await _customerRepository.InsertAsync(question);
         return await Task.FromResult<ActionResult<Question>>(result);
