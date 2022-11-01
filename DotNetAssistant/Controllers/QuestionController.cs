@@ -1,9 +1,7 @@
 ﻿using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
-using DotNetAssistant.Helpers;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetAssistant.Controllers;
@@ -13,7 +11,6 @@ public class QuestionController : ControllerBase
 {
     private readonly IRepository<Question> _customerRepository;
     private readonly IValidator<Question> _validator;
-
 
     public QuestionController(IRepository<Question> customerRepository, IValidator<Question> validator)
     {

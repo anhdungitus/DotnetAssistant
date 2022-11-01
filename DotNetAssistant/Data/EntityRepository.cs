@@ -1,5 +1,6 @@
 ﻿using DotNetAssistant.Core;
 using DotNetAssistant.Core.Caching;
+using DotNetAssistant.Core.Events;
 using DotNetAssistant.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,11 +9,13 @@ namespace DotNetAssistant.Data;
 public sealed class EntityRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
 {
     private readonly IStaticCacheManager _staticCacheManager;
+    private readonly IEventPublisher _eventPublisher;
     private readonly ApplicationDbContext _context;
     
-    public EntityRepository(ApplicationDbContext context, IStaticCacheManager staticCacheManager)
+    public EntityRepository(ApplicationDbContext context, IStaticCacheManager staticCacheManager, IEventPublisher eventPublisher)
     {
         _staticCacheManager = staticCacheManager;
+        _eventPublisher = eventPublisher;
         _context = context;
         Table = context.Set<TEntity>();
         TableDbSet = context.Set<TEntity>();
@@ -150,7 +153,8 @@ public sealed class EntityRepository<TEntity> : IRepository<TEntity> where TEnti
     {
         var entityEntry = await TableDbSet.AddAsync(entity);
         await _context.SaveChangesAsync();
-        await _staticCacheManager.RemoveByPrefixAsync(DnaEntityCacheDefaults<TEntity>.Prefix);
+        await _eventPublisher.PublishAsync(new EntityInsertedEvent<TEntity>(entity));
+        // await _staticCacheManager.RemoveByPrefixAsync(DnaEntityCacheDefaults<TEntity>.Prefix);
         return entityEntry.Entity;
     }
 

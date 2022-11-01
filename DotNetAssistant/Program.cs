@@ -1,9 +1,11 @@
 using System.Text;
 using DotNetAssistant.Auth;
 using DotNetAssistant.Core.Caching;
+using DotNetAssistant.Core.Events;
 using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
 using DotNetAssistant.Helpers;
+using DotNetAssistant.Infrastructure.Cache;
 using DotNetAssistant.Model;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -87,6 +89,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
 builder.Services.AddScoped<IRepository<Question>, EntityRepository<Question>>();
 builder.Services.AddScoped<IValidator<Question>, QuestionValidator>();
+builder.Services.AddSingleton<IEventPublisher, EventPublisher>();
+builder.Services.AddSingleton<IConsumer<EntityInsertedEvent<Question>>, ModelCacheEventConsumer>();
 
 
 var memoryCache = new MemoryCache(new MemoryCacheOptions());
