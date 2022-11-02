@@ -1,6 +1,11 @@
+using DotNetAssistant.Auth;
 using DotNetAssistant.Core.Caching;
+using DotNetAssistant.Core.Events;
+using DotNetAssistant.Core.Infrastructure;
 using DotNetAssistant.Data;
 using DotNetAssistant.Entities;
+using DotNetAssistant.Infrastructure.Cache;
+using DotNetAssistant.Model;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -21,9 +26,19 @@ public class Tests
         services.AddScoped<IRepository<Customer>, EntityRepository<Customer>>();
         services.AddScoped<IRepository<Question>, EntityRepository<Question>>();
         
+        services.Configure<JwtIssuerOptions>(options =>
+        {
+            options.Issuer = nameof(options.Issuer);
+            options.Audience = nameof(options.Audience);
+        });
+        
+        services.AddSingleton<IJwtFactory, JwtFactory>();
+        
         var memoryCache = new MemoryCache(new MemoryCacheOptions());
         services.AddSingleton<IMemoryCache>(memoryCache);
         services.AddSingleton<IStaticCacheManager, MemoryCacheManager>();
+        services.AddSingleton<IEventPublisher, EventPublisher>();
+        services.AddSingleton<IConsumer<EntityInsertedEvent<Question>>, ModelCacheEventConsumer>();
         
         var serviceProvider = services.BuildServiceProvider();
         _customerRepository = serviceProvider.GetService<IRepository<Customer>>();
@@ -96,4 +111,18 @@ public class Tests
         await _questionRepository?.InsertAsync(data)!;
         var list = await _questionRepository.GetByIdAsync(data.Id);
     }
+    
+    [Test]
+    public async Task SingletonTest()
+    {
+        Singleton<DataConfig>.Instance = new DataConfig();
+        var dataConfig = Singleton<DataConfig>.Instance;
+        dataConfig.Should().NotBeNull();
+    }
+}
+
+public class DataConfig
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
 }
